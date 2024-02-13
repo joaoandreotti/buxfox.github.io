@@ -34,16 +34,16 @@ User: root
 Pass: password
 ```
 
-It is possible to login with default credentials.
+It is possible to log in with default credentials.
 ![Request tracker page](imgs/request_tracker_page.png "Request tracker page")
 
-Issue tracker software normally contains sensitive information. Usually on the issues but they can be useful on finding users list, information about local services, and etc.
-On this server there were only two users:
+Issue tracker software normally contains sensitive information. Usually on the issues but they can be useful in finding users list, information about local services, etc.
+On this server, there were only two users:
 ![Request tracker user list](imgs/request_tracker_user_list.png "Request tracker user list")
-lnorgaard user have the password on the description
+lnorgaard user has the password on the description
 ![lnorgaard password](imgs/lnorgaard_password.png "lnorgaard password")
 
-Checking if it's possible to login on ssh with this user and it's possible.
+Checking if it's possible to log in on ssh with this user and it's possible.
 
 ### lnorgaard
 RT30000.zip file on home, containing two files
@@ -75,16 +75,16 @@ $ dotnet run ~/keeper/KeePassDumpFull.dmp
 ... SNIP ...
 Combined: ●{ø, Ï, ,, l, `, -, ', ], §, A, I, :, =, _, c, M}dgrød med fløde
 ```
-This means that the first character is unknown `●` and the following are possible 16 second characters appended on beggining of `dgrød med fløde`.
-Using google translate to identify the language, to later perform a smart bruteforce on the character set. The language was identified as danish.
+This means that the first character is unknown `●` and the following are possible 16-second characters appended on beginning of `dgrød med fløde`.
+Using Google Translate to identify the language, to later perform a smart brute force on the character set. The language was identified as Danish.
 When doing this, it was corrected to `rødgrød med fløde`. This is the correct password for passcodes.kdbx
 ![KeePass Login](imgs/keepass_login.png "KeePass Login")
 
-There was a root user with both password and PuTTY ssh key pair
+There was a root user with both password and PuTTY SSH key pair
 ![Root SSH](imgs/root_ssh.png "Root SSH")
 
 [A PuTTY ssh key can be converted to openssh format][ssh-key-types-convert-ppk].
-Following the guid to get the private key and loggin in as root
+Following the guide to get the private key and log in as the root
 ```
 $ ssh -i root.id_rsa root@10.10.11.227
 $ id
