@@ -76,7 +76,7 @@ At this point we move on because it's possible to execute pre/post build scripts
 ... SNIP ...
 ```
 
-Using [this one liner reverse shell], encoding with utf16 base64 and setting the command to `powershell.exe -encodedcommand BASE64` we get a reverse shell.  
+Using [this one liner reverse shell][ps-shell], encoding with utf16 base64 and setting the command to `powershell.exe -encodedcommand BASE64` we get a reverse shell.  
 In case this doesn't work, we can just issue a `ping` command and check on wireshark/tcpdump if we get a ICMP request.
 
 ### User enox
