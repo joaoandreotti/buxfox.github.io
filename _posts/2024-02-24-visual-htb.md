@@ -65,8 +65,8 @@ Waiting for the build to complete
 Build completed and it fails... 
 ![Build completed](/assets/2024-02-24-visual-htb/build_completed.png "Build completed")
 
-Searching for the error it seems like it has something to do with cache.
-But at this point we move on because it's possible to execute pre/post build scripts on a csproj.
+Searching for the error it seems like it has something to do with cache.  
+At this point we move on because it's possible to execute pre/post build scripts on a csproj.
 
 ```xml
 ... SNIP ...
@@ -76,7 +76,7 @@ But at this point we move on because it's possible to execute pre/post build scr
 ... SNIP ...
 ```
 
-Using [this one liner reverse shell], encoding with utf16 base64 and setting the command to `powershell.exe -encodedcommand BASE64` we get a reverse shell.
+Using [this one liner reverse shell], encoding with utf16 base64 and setting the command to `powershell.exe -encodedcommand BASE64` we get a reverse shell.  
 In case this doesn't work, we can just issue a `ping` command and check on wireshark/tcpdump if we get a ICMP request.
 
 ### User enox
@@ -117,7 +117,7 @@ SeCreateGlobalPrivilege       Create global objects          Enabled
 SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
 ```
 
-No interesting privileges, but we are executing on a High Integrity Level environment
+No interesting privileges, but we are executing on a High Integrity Level environment.
 Users on the system:
 ```
 administrator
@@ -177,12 +177,12 @@ SeCreateGlobalPrivilege       Create global objects          Enabled
 SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
 ```
 
-The privileges are missing, we can't just get administrator straigth forward.
-To fix this we can follow the [itm4n guide][localservice-privileges].
+The privileges are missing, we can't just get administrator straigth forward.  
+To fix this we can follow the [itm4n guide][localservice-privileges].  
 Then, enabling SeImpersonatePrivileges and using [SharpEfsPotato][sharpefspotato] to get adminstrator.
 
 
 [gogs-server]: <https://gogs.io/> "Gogs Server"
 [ps-shell]: <https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3> "Powershell Reverse"
 [localservice-privileges]: <https://itm4n.github.io/localservice-privileges/> "Local Service Privileges"
-[sharpefspotatao]: <https://github.com/bugch3ck/SharpEfsPotato> "SharpEfsPotato"
+[sharpefspotato]: <https://github.com/bugch3ck/SharpEfsPotato> "SharpEfsPotato"
