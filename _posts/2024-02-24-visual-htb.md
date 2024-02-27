@@ -182,7 +182,7 @@ To fix this we can follow the [itm4n guide][localservice-privileges].
 Then, enabling SeImpersonatePrivileges and using [SharpEfsPotato][sharpefspotato] to get adminstrator.
 
 
-![gogs-server]: <https://gogs.io/> "Gogs Server"
-![ps-shell]: <https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3> "Powershell Reverse"
-![localservice-privileges]: <https://itm4n.github.io/localservice-privileges/> "Local Service Privileges"
-![sharpefspotatao]: <https://github.com/bugch3ck/SharpEfsPotato> "SharpEfsPotato"
+[gogs-server]: <https://gogs.io/> "Gogs Server"
+[ps-shell]: <https://gist.github.com/egre55/c058744a4240af6515eb32b2d33fbed3> "Powershell Reverse"
+[localservice-privileges]: <https://itm4n.github.io/localservice-privileges/> "Local Service Privileges"
+[sharpefspotatao]: <https://github.com/bugch3ck/SharpEfsPotato> "SharpEfsPotato"
