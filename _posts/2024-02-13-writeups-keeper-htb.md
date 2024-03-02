@@ -5,7 +5,7 @@ date: 2024-02-13
 ---
 
 # HTB Keeper Write Up
-![HTB Keeper](/assets/2024-02-13-keeper-htb/machine_info.png "Keeper")
+![HTB Keeper](/assets/2024-02-13-writeups-keeper-htb/machine_info.png "Keeper")
 
 ## Introduction
 Keeper is a company that provides a cloud ticketing service. It hosts the open-source software Best Practical Request Tracker.
@@ -39,7 +39,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 First, the network scan analysis shows us an HTTP server running nginx.  
 We didn't get a vhost redirection on `nmap`, so we can access the server without any.
 The page just prints a redirection message to tickets.keeper.htb/rt vhost.
-![Http server no vhost](/assets/2024-02-13-keeper-htb/http_server_no_vhost.png "Http server no vhost")   
+![Http server no vhost](/assets/2024-02-13-writeups-keeper-htb/http_server_no_vhost.png "Http server no vhost")   
 
 ### tickets.keeper.htb
 Best Practical Request Tracker software.  
@@ -51,13 +51,13 @@ Pass: password
 ```
 
 It is possible to log in with default credentials.
-![Request tracker page](/assets/2024-02-13-keeper-htb/request_tracker_page.png "Request tracker page")
+![Request tracker page](/assets/2024-02-13-writeups-keeper-htb/request_tracker_page.png "Request tracker page")
 
 Issue tracker software normally contains sensitive information. Usually on the issues but they can be useful in finding users list, information about local services, etc.
 On this server, there were only two users:
-![Request tracker user list](/assets/2024-02-13-keeper-htb/request_tracker_user_list.png "Request tracker user list")
+![Request tracker user list](/assets/2024-02-13-writeups-keeper-htb/request_tracker_user_list.png "Request tracker user list")
 lnorgaard user has the password on the description
-![lnorgaard password](/assets/2024-02-13-keeper-htb/lnorgaard_password.png "lnorgaard password")
+![lnorgaard password](/assets/2024-02-13-writeups-keeper-htb/lnorgaard_password.png "lnorgaard password")
 
 Checking if it's possible to log in on ssh with this user and it's possible.
 
@@ -96,7 +96,7 @@ Using Google Translate to identify the language, to later perform a smart brute 
 When doing this, it was corrected to `rødgrød med fløde`. This is the correct password for passcodes.kdbx
 
 There was a root user with both password and PuTTY SSH key pair
-![Root SSH](/assets/2024-02-13-keeper-htb/root_ssh.png "Root SSH")
+![Root SSH](/assets/2024-02-13-writeups-keeper-htb/root_ssh.png "Root SSH")
 
 [A PuTTY ssh key can be converted to openssh format][ssh-key-types-convert-ppk].
 Following the guide to get the private key and log in as the root

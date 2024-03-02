@@ -5,7 +5,7 @@ date: 2024-02-24
 ---
 
 # HTB Visual Write Up
-![HTB Visual](/assets/2024-02-24-visual-htb/machine_info.png "Visual")
+![HTB Visual](/assets/2024-02-24-writeups-visual-htb/machine_info.png "Visual")
 
 ## Introduction
 Visual is a host that provides .NET 6 online compilation. It downloads the project from a git server and returns the compiled executable.
@@ -30,7 +30,7 @@ PORT   STATE SERVICE REASON          VERSION
 ## Investigation
 The only network service to investigate for now is the http.
 This service provides a remote .NET 6 compilation, if a git link is provided and the project uses a solution (.sln)
-![Http Service](/assets/2024-02-24-visual-htb/http_service.png "Http Service")
+![Http Service](/assets/2024-02-24-writeups-visual-htb/http_service.png "Http Service")
 
 ### Compilation service
 To test this service, first and foremost we must setup a git server.
@@ -41,7 +41,7 @@ Downloading the pre compiled binaries and running the web server:
 `./gogs web`
 
 The setup is the following:
-![Gogs setup](/assets/2024-02-24-visual-htb/gogs_setup.png "Gogs setup")
+![Gogs setup](/assets/2024-02-24-writeups-visual-htb/gogs_setup.png "Gogs setup")
 
 It isn't necessary to setup any administrator.
 We will create an account, a repository and clone it to our local machine.
@@ -57,16 +57,16 @@ $ dotnet sln Test.sln add Test.csproj
 Finally, testing the project `dotnet run Test.sln`.
 Before we push the code, we exclude the obj/ and bin/ with .gitignore. This step is just for good practices
 The repository will look like this
-![Gogs repository](/assets/2024-02-24-visual-htb/gogs_repository.png "Gogs repository")
+![Gogs repository](/assets/2024-02-24-writeups-visual-htb/gogs_repository.png "Gogs repository")
 
 Uploading the code through our git link
-![Compilation service](/assets/2024-02-24-visual-htb/compilation_service.png "Compilation service")
+![Compilation service](/assets/2024-02-24-writeups-visual-htb/compilation_service.png "Compilation service")
 
 Waiting for the build to complete
-![Waiting to build](/assets/2024-02-24-visual-htb/waiting_to_build.png "Waiting to build")
+![Waiting to build](/assets/2024-02-24-writeups-visual-htb/waiting_to_build.png "Waiting to build")
 
 Build completed and it fails... 
-![Build completed](/assets/2024-02-24-visual-htb/build_completed.png "Build completed")
+![Build completed](/assets/2024-02-24-writeups-visual-htb/build_completed.png "Build completed")
 
 Searching for the error it seems like it has something to do with cache.  
 At this point we move on because it's possible to execute pre/post build scripts on a csproj.
