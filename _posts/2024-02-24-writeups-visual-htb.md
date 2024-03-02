@@ -15,7 +15,7 @@ Visual is a host that provides .NET 6 online compilation. It downloads the proje
 <details>
 <summary><b>Nmap scan result</b></summary>
 
-```
+~~~
 PORT   STATE SERVICE REASON          VERSION
 80/tcp open  http    syn-ack ttl 127 Apache httpd 2.4.56 ((Win64) OpenSSL/1.1.1t PHP/8.1.17)
 |_http-server-header: Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.1.17
@@ -23,7 +23,7 @@ PORT   STATE SERVICE REASON          VERSION
 |_  Supported Methods: GET HEAD POST OPTIONS
 |_http-title: Visual - Revolutionizing Visual Studio Builds
 |_http-favicon: Unknown favicon MD5: 556F31ACD686989B1AFCF382C05846AA
-```
+~~~
 
 </details>
 
