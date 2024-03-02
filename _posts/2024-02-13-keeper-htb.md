@@ -7,6 +7,9 @@ date: 2024-02-13
 # HTB Keeper Write Up
 ![HTB Keeper](/assets/2024-02-13-keeper-htb/machine_info.png "Keeper")
 
+## Introduction
+Keeper is a company that provides a cloud ticketing service. It hosts the open-source software Best Practical Request Tracker.
+
 ## Network Scan
 
 <details>
@@ -33,12 +36,15 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 </details>
 
 ## Investigation
-Accessing the http service, it just prints a redirection message to tickets.keeper.htb/rt vhost.
+First, the network scan analysis shows us an HTTP server running nginx.  
+We didn't get a vhost redirection on `nmap`, so we can access the server without any.
+The page just prints a redirection message to tickets.keeper.htb/rt vhost.
 ![Http server no vhost](/assets/2024-02-13-keeper-htb/http_server_no_vhost.png "Http server no vhost")   
 
 ### tickets.keeper.htb
-Best Practical Request Tracker software. There is no public exploit to recent vulnerabilities
-This service comes with default credentials
+Best Practical Request Tracker software.  
+There is no public exploit to recent vulnerabilities.  
+This service comes with default credentials.  
 ```
 User: root
 Pass: password
@@ -78,7 +84,7 @@ $ file passcodes.kdbx
 passcodes.kdbx: Keepass password database 2.x KDBX
 ```
 
-There is a [KeePass vulnerability][CVE-2023-32784] that it is possible to retrieve passwords from a memory dump.
+There is a [KeePass vulnerability][CVE-2023-32784] that it possible to retrieve passwords from a memory dump.
 Using a public exploit from [vdhoney][keepass-password-dumper] it's possible to find a list with possible passwords
 ```
 $ dotnet run ~/keeper/KeePassDumpFull.dmp
