@@ -5,7 +5,7 @@ date: 2024-03-02
 ---
 
 # HTB CozyHosting Write Up
-![HTB CozyHosting](/assets/2024-03-02-cozyhosting-htb/machine_info.png "CozyHosting")
+![HTB CozyHosting](/assets/2024-03-02-writeups-cozyhosting-htb/machine_info.png "CozyHosting")
 
 ## Introduction
 Cozy Hosting is a cloud server provider company, which offer multiple management tools.
@@ -36,16 +36,16 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 ## Investigation
 First, when we look at the port scan result we can see a usual web server infrastructure that exposes SSH to further management.  
 It is using nginx as a reverse proxy and redirect http requests to http://cozyhosting.htb.  
-![CozyHosting website](/assets/2024-03-02-cozyhosting-htb/cozyhosting_website.png "CozyHosting website")
+![CozyHosting website](/assets/2024-03-02-writeups-cozyhosting-htb/cozyhosting_website.png "CozyHosting website")
 
 The main website contains a login page that doesn't allow registration. We perform some basic SQLi tests but none of them worked/crashed.  
-![Login Page](/assets/2024-03-02-cozyhosting-htb/login_page.png "Login Page")
+![Login Page](/assets/2024-03-02-writeups-cozyhosting-htb/login_page.png "Login Page")
 
 Reverse proxy technologies can forward the request to another server that is running on localhost only.
 Sometimes the backend server can return this information on the HTTP Header, which wasn't this case.  
 Another way to perform this test is to access an error page, the 404 can be a specially crafted for a better UX than the default nginx error.  
 We got the following message  
-![Whitelabel Error](/assets/2024-03-02-cozyhosting-htb/whitelabel_error.png "Whitelabal Error")
+![Whitelabel Error](/assets/2024-03-02-writeups-cozyhosting-htb/whitelabel_error.png "Whitelabal Error")
 
 This doesn't tell which server is in place, but we can search for the error and found out where it came from.  
 A lot of results pointed it out to the [Spring Boot Framework][java-spring-boot].  
@@ -69,11 +69,11 @@ actuator/beans          [Status: 200, Size: 127224, Words: 542, Lines: 1]
 ```
 
 In the `actuator/sessions` we can get a session token for the user `kanderson`.
-![Kanderson Session](/assets/2024-03-02-cozyhosting-htb/kanderson_session.png "Kanderson Session")
+![Kanderson Session](/assets/2024-03-02-writeups-cozyhosting-htb/kanderson_session.png "Kanderson Session")
 Using this token we can login into the cozyhosting.htb website.
 
 The admin dashboard
-![Admin dashboard](/assets/2024-03-02-cozyhosting-htb/admin_dashboard.png "Admin bashboard")
+![Admin dashboard](/assets/2024-03-02-writeups-cozyhosting-htb/admin_dashboard.png "Admin bashboard")
 
 Exploring the dashboard for more information but none was found.
 
