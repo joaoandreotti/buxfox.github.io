@@ -5,7 +5,8 @@ date: 2024-03-02
 ---
 
 # HTB CozyHosting Write Up
-![HTB CozyHosting](/assets/2024-03-02-writeups-cozyhosting-htb/machine_info.png "CozyHosting")
+![HTB CozyHosting](/assets/2024-03-02-writeups-cozyhosting-htb/machine_info.png "HTB CozyHosting")
+
 
 ## Introduction
 Cozy Hosting is a cloud server provider company, which offer multiple management tools.
