@@ -15,8 +15,7 @@ Keeper is a company that provides a cloud ticketing service. It hosts the open-s
 <details>
 <summary><b>Nmap scan result</b></summary>
 
-```
-
+~~~
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -30,8 +29,7 @@ PORT   STATE SERVICE REASON         VERSION
 |_http-server-header: nginx/1.18.0 (Ubuntu)
 |_http-title: Site doesn't have a title (text/html).
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-
-```
+~~~
 
 </details>
 
