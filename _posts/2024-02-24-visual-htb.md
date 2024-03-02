@@ -7,6 +7,9 @@ date: 2024-02-24
 # HTB Visual Write Up
 ![HTB Visual](/assets/2024-02-24-visual-htb/machine_info.png "Visual")
 
+## Introduction
+Visual is a host that provides .NET 6 online compilation. It downloads the project from a git server and returns the compiled executable.
+
 ## Network Scan
 
 <details>
