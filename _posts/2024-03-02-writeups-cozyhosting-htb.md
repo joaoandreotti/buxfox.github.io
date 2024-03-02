@@ -16,7 +16,7 @@ Cozy Hosting is a cloud server provider company, which offer multiple management
 <details>
 <summary><b>Nmap scan result</b></summary>
 
-```
+~~~
 PORT   STATE SERVICE REASON         VERSION
 22/tcp open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.3 (Ubuntu Linux; protocol 2.0)
 | ssh-hostkey: 
@@ -30,7 +30,7 @@ PORT   STATE SERVICE REASON         VERSION
 | http-methods: 
 |_  Supported Methods: GET OPTIONS
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
-```
+~~~
 
 </details>
 
