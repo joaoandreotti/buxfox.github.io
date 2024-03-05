@@ -1,7 +1,8 @@
 ---
-layout: post_1
+layout: default_1
 title: "Keeper - HTB"
 date: 2024-02-13
+tags: writeup hackthebox keeper
 ---
 
 # HTB Keeper Write Up
