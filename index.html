@@ -7,6 +7,12 @@ A cybersecurity blog for CTFs writeups and related topics.
 
 <ul class="posts">
     {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><span>{{ post.tags }}</span></li>
+    <li>
+        <span>{{ post.date | date_to_string }}</span> »
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a> »
+        <span>
+            {{ post.tags[0] }}
+        </span>
+    </li>
     {% endfor %}
 </ul>
