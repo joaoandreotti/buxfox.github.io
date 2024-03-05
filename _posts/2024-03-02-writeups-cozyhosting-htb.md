@@ -1,7 +1,8 @@
 ---
-layout: post_1
+layout: default_1
 title: "CozyHosting - HTB"
 date: 2024-03-02
+tags: writeup hackthebox cozyhosting
 ---
 
 # HTB CozyHosting Write Up
