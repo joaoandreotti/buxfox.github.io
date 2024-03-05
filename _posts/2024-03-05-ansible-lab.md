@@ -6,7 +6,7 @@ tags: ansible lab
 ---
 
 # Introduction
-[Ansible-Lab Github Repo][ansible-lab]
+[Ansible-Lab Github Repo][ansible-lab].  
 In this blog I'll explain how I build my libvirt/kvm lab.
 The current setup is based on Qubes OS idea of appvms but in a more flexible way.  
 The main inspiration for this setup was the Red Hat article on how to [Build a lab in 36 seconds][1] with ansible.  
