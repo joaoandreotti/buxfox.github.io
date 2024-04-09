@@ -36,13 +36,12 @@ It contains
 
 #### Update image
 The `update_image` and `replace_image` are for image updates.  
-Executing the `update_image` role create a copy of image listed on parameters and update them.
-Then, executing `replace_image` deletes the old version and replace for the newly updated one.
+Executing the `update_image` role create a copy of image listed on parameters and update them.  
+Then, executing `replace_image` deletes the old version and replace for the newly updated one.  
 This setup was made to create a fail-safe update.
 
 ## Example
 A basic example is to run the `complete_lab.yml` playbook. It will create a ready to go lab.
-
 
 [1]: <https://www.redhat.com/sysadmin/build-VM-fast-ansible> "Build a lab in 36 seconds"
 [2]: <https://www.cyberciti.biz/faq/kvm-install-centos-redhat-using-kickstart-ks-cfg/> "Example article on kickstart"
