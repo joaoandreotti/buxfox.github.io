@@ -46,6 +46,7 @@ The main website is static, and it was created with `Craft CMS`
 The CMS version in hyperlinked in the website `https://github.com/craftcms/cms/tree/4.4.14`.  
 This version is vulnerable to a RCE vulnerability with a public exploit - [CVE-2023-41892][cve-2023-41892]
 
+### User www-data
 Running the exploit return a shell with `www-data` user
 ```
 $ id
@@ -68,6 +69,7 @@ Meanwhile, searching the backup for more information. The backup stored the admi
 `admin@surveillance.htb | 39ed84b22ddc63ab3725a1820aaa7f73a8f3f10d0848123562c9f35c675770ec`
 Easily cracked to `starcraft122490`
 
+### User matthew
 Checking for password reuse and logged as matthew.
 ```
 $ id
@@ -86,6 +88,7 @@ Moving on to zoneminder service. The service description is
 `A full-featured, open source, state-of-the-art video surveillance software system.`
 Again, vulnerable to Unauthenticated RCE [CVE-2023-26035][cve-2023-26035].
 
+### User zoneminder
 Moved to the other user on the box, zoneminder
 ```
 $ id
