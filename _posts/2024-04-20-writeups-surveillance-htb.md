@@ -30,10 +30,11 @@ PORT     STATE SERVICE REASON         VERSION
 |_http-title: Did not follow redirect to http://surveillance.htb/
 | http-methods:
 |_  Supported Methods: GET HEAD POST OPTIONS
-
 ~~~
 </div>
+
 </details>
+
 
 ## Investigation
 The http server redirects to a vhost `surveillance.htb`.  
