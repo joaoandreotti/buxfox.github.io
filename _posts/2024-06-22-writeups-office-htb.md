@@ -1,7 +1,7 @@
 ---
 layout: default_1
 title: "Office - HTB"
-date: 2024-04-20
+date: 2024-06-22
 tags: writeup hackthebox office active directory domain controller
 ---
 
