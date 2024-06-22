@@ -553,7 +553,7 @@ https://blog.improsec.com/tech-blog/asreqroast-from-mitm-to-hash
 ```
 
 I really recommend reading some Kerberos network packet analysis such as [robert.broeckelmann][robert-medium] to be familiared with the prototol.
-![Wireshark KBR](/assets/2024-04-20-writeups-office-htb/krb_as-req_pcap.png "Wireshark KBR")
+![Wireshark KBR](/assets/2024-06-22-writeups-office-htb/krb_as-req_pcap.png "Wireshark KBR")
 
 Creating a hash file and cracking it with hashcat
 ```
