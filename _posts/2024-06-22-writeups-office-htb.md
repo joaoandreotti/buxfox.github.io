@@ -6,7 +6,7 @@ tags: writeup hackthebox office active directory domain controller
 ---
 
 # HTB Office Write Up
-![HTB Office](/assets/2024-04-20-writeups-office-htb/machine_info.png "HTB Office")
+![HTB Office](/assets/2024-06-22-writeups-office-htb/machine_info.png "HTB Office")
 
 
 ## Introduction
@@ -17,6 +17,7 @@ A Active Directory Domain Controller server, with a web server for the Company's
 <details>
 <summary><b>Nmap scan result</b></summary>
 <div markdown="1">
+
 ~~~
 PORT      STATE SERVICE       REASON          VERSION
 53/tcp    open  domain        syn-ack ttl 127 Simple DNS Plus
@@ -250,6 +251,7 @@ PORT      STATE SERVICE       REASON          VERSION
 49675/tcp open  ncacn_http    syn-ack ttl 127 Microsoft Windows RPC over HTTP 1.0
 57567/tcp open  msrpc         syn-ack ttl 127 Microsoft Windows RPC
 Service Info: Hosts: DC, www.example.com; OS: Windows; CPE: cpe:/o:microsoft:windows
+  
 ~~~
 </div>
 
@@ -416,6 +418,7 @@ Running [enum4linux-ng][enum4linux-ng] again, this time with dwolfe user:
 <details>
 <summary><b>Users</b></summary>
 <div markdown="1">
+
 ~~~
 '1107':
   username: PPotts
@@ -486,6 +489,7 @@ Running [enum4linux-ng][enum4linux-ng] again, this time with dwolfe user:
 <details>
 <summary><b>Password Policy</b></summary>
 <div markdown="1">
+  
 ~~~
 Domain password information:
   Password history length: 24
@@ -512,6 +516,7 @@ Domain logoff information:
 <details>
 <summary><b>SMB Shares</b></summary>
 <div markdown="1">
+
 ~~~
 Sharename       Type      Comment
 ---------       ----      -------
@@ -571,6 +576,7 @@ Following the [hacktricks joomla guide][ht-joomla] to execute a [reverse shell][
 <details>
 <summary><b>Whoami</b></summary>
 <div markdown="1">
+
 ~~~
 USER INFORMATION
 ----------------
@@ -622,6 +628,7 @@ Kerberos support for Dynamic Access Control on this device has been disabled.
 <details>
 <summary><b>Systeminfo</b></summary>
 <div markdown="1">
+
 ~~~
 Host Name:                 DC
 OS Name:                   Microsoft Windows Server 2022 Standard
@@ -715,6 +722,7 @@ Creating the malicious ODT file with the same reverse shell used earlier and we 
 <details>
 <summary><b>Whoami</b></summary>
 <div markdown="1">
+
 ~~~
 USER INFORMATION
 ----------------
@@ -786,6 +794,7 @@ This tool is pretty good as it helps a lot with UAC bypass.
 <details>
 <summary><b>Whoami</b></summary>
 <div markdown="1">
+
 ~~~
 USER INFORMATION
 ----------------
